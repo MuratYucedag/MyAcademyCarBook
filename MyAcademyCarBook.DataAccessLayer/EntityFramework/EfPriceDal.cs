@@ -13,5 +13,3 @@ namespace MyAcademyCarBook.DataAccessLayer.EntityFramework
     {
     }
 }
-//dependency injection
-//onu business
