@@ -10,6 +10,13 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddDbContext<CarBookContext>();
 builder.Services.AddScoped<IBrandDal, EfBrandDal>();
 builder.Services.AddScoped<IBrandService, BrandManager>();
+
+builder.Services.AddScoped<ICarStatusDal,EfCarStatusDal>();
+builder.Services.AddScoped<ICarStatusService,CarStatusManager>();
+
+builder.Services.AddScoped<ICarDal,EfCarDal>();
+builder.Services.AddScoped<ICarService,CarManager>();
+
 builder.Services.AddControllersWithViews();
 
 var app = builder.Build();

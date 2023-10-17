@@ -1,4 +1,6 @@
-﻿using MyAcademyCarBook.DataAccessLayer.Abstract;
+﻿using Microsoft.EntityFrameworkCore;
+using MyAcademyCarBook.DataAccessLayer.Abstract;
+using MyAcademyCarBook.DataAccessLayer.Concrete;
 using MyAcademyCarBook.DataAccessLayer.Repositories;
 using MyAcademyCarBook.EntityLayer.Concrete;
 using System;
@@ -11,5 +13,11 @@ namespace MyAcademyCarBook.DataAccessLayer.EntityFramework
 {
     public class EfCarDal : GenericRepository<Car>, ICarDal
     {
+        public List<Car> GetAllCarsWithBrands()
+        {
+            var context = new CarBookContext();
+            var values = context.Cars.Include(x => x.Brand).ToList();
+            return values;
+        }
     }
 }
